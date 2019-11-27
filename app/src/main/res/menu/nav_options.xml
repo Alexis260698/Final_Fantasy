@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_ver_notas"
+            android:icon="@android:drawable/ic_dialog_email"
+            android:title="@string/ver_notas"
+            />
+        <item
+            android:id="@+id/menu_ver_tareas"
+            android:icon="@android:drawable/ic_dialog_email"
+            android:title="@string/ver_tareas"
+            />
+        <item
+            android:id="@+id/menu_agregar_notas"
+            android:icon="@android:drawable/ic_dialog_email"
+            android:title="@string/agregar_notas"
+            />
+        <item
+            android:id="@+id/menu_agregar_tareas"
+            android:icon="@android:drawable/ic_dialog_email"
+            android:title="@string/agregar_tareas"
+            />
+    </group>
+
+</menu>

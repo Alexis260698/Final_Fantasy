@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">FinalProyect</string>
+    <string name="ver_notas">Ver Notas</string>
+    <string name="ver_tareas">Ver Tareas</string>
+    <string name="agregar_notas">Agregar notas</string>
+    <string name="agregar_tareas">Agregar tareas</string>
+    <string name="agregar">Agregar</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="bienvenido">Bienvenido</string>
+</resources>
