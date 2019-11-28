@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.finalproyect.Clases.Nota;
+import com.example.finalproyect.Daos.DAONotas;
 import com.example.finalproyect.R;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class VerNotasFragment extends Fragment {
     private ListView listView;
     private ArrayList<Nota> notas;
     private ArrayAdapter<Nota> adapter;
+    private DAONotas daoNotas;
 
     public VerNotasFragment() {
         // Required empty public constructor
@@ -39,8 +41,13 @@ public class VerNotasFragment extends Fragment {
 
         listView = view.findViewById(R.id.lstNotas);
 
-        List<String> notas = new ArrayList<String>();
+        String[] Notas1 = {""};
 
+        notas= daoNotas.buscarporTitulo(Notas1);
+
+        adapter = new ArrayAdapter<Nota>(view.getContext(),android.R.layout.simple_list_item_1,notas);
+
+        listView.setAdapter(adapter);
 
         return view;
     }
