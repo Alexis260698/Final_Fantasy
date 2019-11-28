@@ -6,8 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 
-import com.example.finalproyect.Activity.BD;
-import com.example.finalproyect.Activity.Ruta;
+import com.example.finalproyect.BDD.BD;
+import com.example.finalproyect.Clases.Ruta;
 
 import java.util.ArrayList;
 

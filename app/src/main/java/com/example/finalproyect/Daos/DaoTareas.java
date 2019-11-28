@@ -5,8 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.finalproyect.Activity.BD;
-import com.example.finalproyect.Activity.Tarea;
+import com.example.finalproyect.BDD.BD;
+import com.example.finalproyect.Clases.Tarea;
 
 import java.util.ArrayList;
 

@@ -1,17 +1,21 @@
-package com.example.finalproyect.Activity;
+package com.example.finalproyect.Clases;
 
 
 import java.io.Serializable;
 
-public class Nota implements Serializable {
+public class Tarea implements Serializable {
     int id;
     String titulo;
     String descripcion;
+    String fecha;
+    String hora;
 
-    public Nota(int id, String titulo, String descripcion) {
+    public Tarea(int id, String titulo, String descripcion, String fecha, String hora) {
         this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;
+        this.fecha = fecha;
+        this.hora = hora;
     }
 
     public int getId() {
@@ -38,7 +42,24 @@ public class Nota implements Serializable {
         this.descripcion = descripcion;
     }
 
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
+
     public String toString(){
-        return "Nota " + id + "\n" + titulo + "\n" + descripcion;
+        return "Tarea " + id + "\n" + titulo + "\n" + descripcion + "\nfecha: " + fecha + "\nhr: " + hora;
     }
 }

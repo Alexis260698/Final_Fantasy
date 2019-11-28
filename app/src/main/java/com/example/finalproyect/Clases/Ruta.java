@@ -1,4 +1,4 @@
-package com.example.finalproyect.Activity;
+package com.example.finalproyect.Clases;
 
 import android.net.Uri;
 

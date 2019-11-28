@@ -1,21 +1,19 @@
-package com.example.finalproyect.Activity;
+package com.example.finalproyect.Clases;
 
+
+import com.example.finalproyect.Fragments.AgregarNotasFragment;
 
 import java.io.Serializable;
 
-public class Tarea implements Serializable {
+public class Nota implements Serializable {
     int id;
     String titulo;
     String descripcion;
-    String fecha;
-    String hora;
 
-    public Tarea(int id, String titulo, String descripcion, String fecha, String hora) {
+    public Nota(int id, String titulo, String descripcion) {
         this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;
-        this.fecha = fecha;
-        this.hora = hora;
     }
 
     public int getId() {
@@ -42,24 +40,7 @@ public class Tarea implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public String getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
-
-    public String getHora() {
-        return hora;
-    }
-
-    public void setHora(String hora) {
-        this.hora = hora;
-    }
-
-
     public String toString(){
-        return "Tarea " + id + "\n" + titulo + "\n" + descripcion + "\nfecha: " + fecha + "\nhr: " + hora;
+        return "Nota " + id + "\n" + titulo + "\n" + descripcion;
     }
 }
