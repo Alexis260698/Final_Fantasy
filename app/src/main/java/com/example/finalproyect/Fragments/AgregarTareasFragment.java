@@ -44,7 +44,7 @@ public class AgregarTareasFragment extends Fragment {
     Button btnRecordatorio;
     Button btnPlusrecordatorios;
     Button btnGuardar;
-
+    View view;
 
     Tarea tarea;
     private int day, month, year, hour, min;
@@ -68,7 +68,7 @@ public class AgregarTareasFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_agregar_tareas, container, false);
+         view=inflater.inflate(R.layout.fragment_agregar_tareas, container, false);
 
         tvTitulo=(TextView) view.findViewById(R.id.tvTitulo);
         tvDescripcion=(TextView) view.findViewById(R.id.etTitulo);
@@ -76,7 +76,7 @@ public class AgregarTareasFragment extends Fragment {
         etDescripcion=(EditText) view.findViewById(R.id.etDescripcion);
         btnRecordatorio=(Button) view.findViewById(R.id.btnRecordatorio);
         btnPlusrecordatorios=(Button)view.findViewById(R.id.btnPlusrecordatorios);
-        btnGuardar=(Button)view.findViewById(R.id.btnPlusrecordatorios);
+        btnGuardar=(Button)view.findViewById(R.id.btnGuardar);
 
         btnRecordatorio.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,23 +86,31 @@ public class AgregarTareasFragment extends Fragment {
         });
 
 
+        btnPlusrecordatorios.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirCalenadarioRecordatorio(view);
+            }
+        });
 
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                insert(v);
-                insertRecordatorios(v);
+            public void onClick(View view) {
+                insert(view);
+                insertRecordatorios(view);
+                btnRecordatorio.setEnabled(true);
                 //crearNotificacion(year,month,day,hour,min);
             }
         });
 
 
+
+
+
         return view;
     }
 
-    public void onclick(View view){
-        abrirCalenadario(view);
-    }
+
 
 
     private void abrirCalenadario(View view) {
@@ -159,6 +167,7 @@ public class AgregarTareasFragment extends Fragment {
                 min = minute;
                 hour= hourOfDay;
                 btnRecordatorio.setText(fecha+"  "+hr);
+                btnRecordatorio.setEnabled(false);
 
 
             }

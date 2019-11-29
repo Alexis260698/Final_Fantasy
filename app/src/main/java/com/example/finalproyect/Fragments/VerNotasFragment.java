@@ -16,7 +16,6 @@ import com.example.finalproyect.Daos.DAONotas;
 import com.example.finalproyect.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -39,7 +38,7 @@ public class VerNotasFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_ver_notas, container, false);
 
-        listView = view.findViewById(R.id.lstNotas);
+        listView = view.findViewById(R.id.lstTareas);
 
         String[] Notas1 = {""};
 

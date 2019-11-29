@@ -86,20 +86,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.056"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.452" />
+            app:layout_constraintTop_toBottomOf="@+id/etDescripcion"
+            app:layout_constraintVertical_bias="0.076" />
 
         <Button
             android:id="@+id/btnPlusrecordatorios"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onclick"
             android:text="Mas Recordatorios"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.049"
+            app:layout_constraintHorizontal_bias="0.066"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.571" />
+            app:layout_constraintTop_toBottomOf="@+id/btnRecordatorio"
+            app:layout_constraintVertical_bias="0.114" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

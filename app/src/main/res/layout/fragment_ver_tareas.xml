@@ -5,11 +5,14 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.VerTareasFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/ver_tareas"
-        android:textSize="40dp"
-        android:gravity="center" />
+        android:layout_height="match_parent">
+
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/lstTareas"/>
+    </RelativeLayout>
 </FrameLayout>
