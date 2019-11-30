@@ -1,12 +1,15 @@
 package com.example.finalproyect.Fragments;
 
-
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.fragment.app.FragmentManager;
 
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -14,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -57,6 +61,16 @@ public class VerNotasFragment extends Fragment {
         // Required empty public constructor
     }
 
+
+    @Override
+    public void onAttach(Context context) {
+        fa = (FragmentActivity) context;
+        super.onAttach(context);
+
+        try{
+            callback = (DataListener) context;
+        }catch (Exception e){
+            throw new ClassCastException(context.toString()+"implementa DataListener prro");
     public static VerNotasFragment newInstance(String param1, String param2) {
         VerNotasFragment fragment = new VerNotasFragment();
         Bundle args = new Bundle();
@@ -107,9 +121,47 @@ public class VerNotasFragment extends Fragment {
         listView = (ListView) getActivity().findViewById(R.id.lstNotas);
 
         listView.setAdapter(adapter);
-
         registerForContextMenu(listView);
+        return view;
+    }
 
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+        MenuInflater inflater = getActivity().getMenuInflater();
+        inflater.inflate(R.menu.context_menu, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        listView = getActivity().findViewById(R.id.lstNotas);
+        daoNotas = new DAONotas(getActivity());
+        Nota nota = (Nota) listView.getItemAtPosition(info.position);
+        switch (item.getItemId()){
+            case R.id.ver_nota:
+                callback.sendData(nota);
+                return true;
+            case R.id.editar:
+                Intent intent = new Intent(getActivity(),AgregarNotasFragment.class);
+                intent.putExtra("nota",nota);
+                //(intent);
+                return true;
+            case R.id.borrar:
+                daoNotas.eliminar(nota.getId());
+                daoNotas = new DAONotas(getActivity());
+                notas = daoNotas.getAll();
+                adapter = new ArrayAdapter(getActivity(),android.R.layout.simple_list_item_1,notas);
+                listView.setAdapter(adapter);
+                return true;
+            default:
+                    return super.onContextItemSelected(item);
+        }
+    }
+
+    public interface DataListener{
+        void sendData(Nota nota);
     }
 
     @Override
@@ -121,9 +173,7 @@ public class VerNotasFragment extends Fragment {
         adapter = new ArrayAdapter<Nota>(getActivity(), android.R.layout.simple_list_item_1, notas);
 
         listView = (ListView) getActivity().findViewById(R.id.lstNotas);
-
         listView.setAdapter(adapter);
-
     }
 
     @Override
@@ -137,7 +187,6 @@ public class VerNotasFragment extends Fragment {
         daoNotas = new DAONotas(getActivity());
 
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-
         listView = (ListView) getActivity().findViewById(R.id.lstNotas);
 
         Nota nota = (Nota) listView.getItemAtPosition(info.position);
@@ -151,9 +200,7 @@ public class VerNotasFragment extends Fragment {
                 adapter = new ArrayAdapter<Nota>(getActivity(), android.R.layout.simple_list_item_1, notas);
 
                 listView = (ListView) getActivity().findViewById(R.id.lstNotas);
-
                 listView.setAdapter(adapter);
-
                 return true;
             case R.id.actualizar:
                 Intent intent = new Intent(getActivity(), ActualizarNotas.class);
@@ -163,9 +210,7 @@ public class VerNotasFragment extends Fragment {
             default:
                 return super.onContextItemSelected(item);
         }
-
     }
-
 
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
@@ -179,12 +224,9 @@ public class VerNotasFragment extends Fragment {
         mListener = null;
     }
 
-
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-
-
 
 }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FinalProyect</string>
+    <string name="ver_notas">Show notes</string>
+    <string name="ver_tareas">Show tasks</string>
+    <string name="agregar_notas">Add notes</string>
+    <string name="agregar_tareas">Add tasks</string>
+    <string name="agregar" translatable="false">Add</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="bienvenido">Welcome</string>
+    <string name="descripcion">Description</string>
+    <string name="titulo">Title</string>
+    <string name="guardar">Save</string>
+    <string name="ver">ver</string>
+</resources>
