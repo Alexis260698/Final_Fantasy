@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.intermedio">
+
+    <fragment
+        android:id="@+id/VerNotasFrag"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="50"
+        tools:layout="@layout/fragment_ver_notas"
+        tools:ignore="Suspicious0dp" />
+
+    <fragment
+        android:id="@+id/VerNota"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="50"
+        tools:layout="@layout/fragment_ver_notas"
+        tools:ignore="Suspicious0dp" />
+
+
+
+</LinearLayout>
