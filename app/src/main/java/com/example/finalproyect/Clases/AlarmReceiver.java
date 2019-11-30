@@ -43,6 +43,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         Notification notification = builder.setContentTitle("Tareas")
                 .setContentText("" +clave)
                 .setTicker("New Message Alert!")
+                .setSmallIcon(R.drawable.ic_event_black_24dp)
                 .setContentIntent(pendingIntent).build();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
