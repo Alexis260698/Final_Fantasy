@@ -88,8 +88,8 @@ public class AgregarTareas extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 insert(view);
-                crearNotificacion(year,month,day,hour,min);
                 insertRecordatorios(view);
+                crearNotificacion(year,month,day,hour,min);
                 btnRecordatorio.setEnabled(true);
 
             }

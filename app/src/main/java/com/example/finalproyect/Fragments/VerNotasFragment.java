@@ -55,31 +55,20 @@ public class VerNotasFragment extends Fragment {
     private DAONotas daoNotas;
     private ArrayList<Nota> notas;
 
-    private OnFragmentInteractionListener mListener;
+    private VerTareasFragment.OnFragmentInteractionListener mListener;
 
     public VerNotasFragment() {
         // Required empty public constructor
     }
 
-
-    @Override
-    public void onAttach(Context context) {
-        fa = (FragmentActivity) context;
-        super.onAttach(context);
-
-        try{
-            callback = (DataListener) context;
-        }catch (Exception e){
-            throw new ClassCastException(context.toString()+"implementa DataListener prro");
     public static VerNotasFragment newInstance(String param1, String param2) {
-        VerNotasFragment fragment = new VerNotasFragment();
+        VerNotasFragment fragment =new VerNotasFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
-
 
 
     @Override
@@ -122,59 +111,27 @@ public class VerNotasFragment extends Fragment {
 
         listView.setAdapter(adapter);
         registerForContextMenu(listView);
-        return view;
-    }
 
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
-        MenuInflater inflater = getActivity().getMenuInflater();
-        inflater.inflate(R.menu.context_menu, menu);
-    }
-
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        listView = getActivity().findViewById(R.id.lstNotas);
-        daoNotas = new DAONotas(getActivity());
-        Nota nota = (Nota) listView.getItemAtPosition(info.position);
-        switch (item.getItemId()){
-            case R.id.ver_nota:
-                callback.sendData(nota);
-                return true;
-            case R.id.editar:
-                Intent intent = new Intent(getActivity(),AgregarNotasFragment.class);
-                intent.putExtra("nota",nota);
-                //(intent);
-                return true;
-            case R.id.borrar:
-                daoNotas.eliminar(nota.getId());
-                daoNotas = new DAONotas(getActivity());
-                notas = daoNotas.getAll();
-                adapter = new ArrayAdapter(getActivity(),android.R.layout.simple_list_item_1,notas);
-                listView.setAdapter(adapter);
-                return true;
-            default:
-                    return super.onContextItemSelected(item);
-        }
-    }
-
-    public interface DataListener{
-        void sendData(Nota nota);
     }
 
     @Override
     public void onResume() {
         super.onResume();
 
+        String[] Notas1 = {""};
+
         daoNotas = new DAONotas(getActivity());
+
+        notas = daoNotas.buscarporTitulo(Notas1);
 
         adapter = new ArrayAdapter<Nota>(getActivity(), android.R.layout.simple_list_item_1, notas);
 
         listView = (ListView) getActivity().findViewById(R.id.lstNotas);
+
         listView.setAdapter(adapter);
+
     }
+
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View lv, ContextMenu.ContextMenuInfo menuInfo) {
@@ -187,30 +144,39 @@ public class VerNotasFragment extends Fragment {
         daoNotas = new DAONotas(getActivity());
 
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+
         listView = (ListView) getActivity().findViewById(R.id.lstNotas);
 
         Nota nota = (Nota) listView.getItemAtPosition(info.position);
 
         switch (item.getItemId()) {
-            case R.id.eliminar:
+            case R.id.borrar:
                 daoNotas.eliminar(nota.getId());
 
+                String[] Notas1 = {""};
+
                 daoNotas = new DAONotas(getActivity());
+
+                notas = daoNotas.buscarporTitulo(Notas1);
 
                 adapter = new ArrayAdapter<Nota>(getActivity(), android.R.layout.simple_list_item_1, notas);
 
                 listView = (ListView) getActivity().findViewById(R.id.lstNotas);
+
                 listView.setAdapter(adapter);
+
                 return true;
-            case R.id.actualizar:
+            case R.id.editar:
                 Intent intent = new Intent(getActivity(), ActualizarNotas.class);
-                intent.putExtra("Nota", nota);
+                intent.putExtra("nota", nota);
                 startActivity(intent);
                 return true;
             default:
                 return super.onContextItemSelected(item);
         }
+
     }
+
 
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
@@ -218,15 +184,19 @@ public class VerNotasFragment extends Fragment {
         }
     }
 
+
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
     }
 
+
+
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
 
 }
