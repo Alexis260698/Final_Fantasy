@@ -136,7 +136,7 @@ public class VerTareasFragment extends Fragment {
         Tarea tarea = (Tarea) lvTareas.getItemAtPosition(info.position);
 
         switch (item.getItemId()) {
-            case R.id.eliminar:
+            case R.id.borrar:
                 daoTareas.eliminar(tarea.getId());
 
                 daoTareas = new DaoTareas(getActivity());
@@ -148,7 +148,7 @@ public class VerTareasFragment extends Fragment {
                 lvTareas.setAdapter(adapter);
 
                 return true;
-            case R.id.actualizar:
+            case R.id.editar:
                 Intent intent = new Intent(getActivity(), ActualizarTareas.class);
                 intent.putExtra("tarea", tarea);
                 startActivity(intent);
