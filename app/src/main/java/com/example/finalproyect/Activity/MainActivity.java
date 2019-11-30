@@ -44,14 +44,6 @@ public class MainActivity extends AppCompatActivity {
                 Fragment  fragment = null;
 
                 switch (menuItem.getItemId()){
-                    case R.id.menu_agregar_notas:
-                        fragment = new AgregarNotasFragment();
-                        fragmentTransaction = true;
-                        break;
-                    case R.id.menu_agregar_tareas:
-                        fragment = new AgregarTareasFragment();
-                        fragmentTransaction = true;
-                        break;
                     case R.id.menu_ver_notas:
                         fragment = new VerNotasFragment();
                         fragmentTransaction = true;
