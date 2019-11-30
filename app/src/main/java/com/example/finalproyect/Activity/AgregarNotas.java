@@ -44,6 +44,7 @@ public class AgregarNotas extends AppCompatActivity {
                 dao.insert(obj);
 
                 Toast.makeText(getApplicationContext(),"Nota Insertada",Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
     }

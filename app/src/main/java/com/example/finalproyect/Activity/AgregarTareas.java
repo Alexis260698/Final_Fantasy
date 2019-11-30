@@ -98,6 +98,72 @@ public class AgregarTareas extends AppCompatActivity {
 
     }
 
+
+    public void crearNotiRecordatorio(int year, int month, int day, int hour, int min){
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent notificationIntent = new Intent(this, AlarmReceiver.class);
+        notificationIntent.putExtra("tarea", "Recordatorio de la tarea "+tarea.getTitulo());
+        PendingIntent broadcast = PendingIntent.getBroadcast(this, 200, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        calendarRecordatorios.set(year,month,day,hour,min,0);
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendarRecordatorios.getTimeInMillis(), broadcast);
+
+        Log.i("Recordatorios", "Hora "+hour+":"+min);
+    }
+
+    public void guardarRecordatorios(int year, int month, int day, int hour, int min, String fecha, String hora){
+        RecordatorioAuxiliar r = new RecordatorioAuxiliar(year, month, day, hour, min, fecha, hora);
+        noSave.add(r);
+    }
+
+    public void insertRecordatorios(View view){
+        String[] Tareas1 = {""}; //para que me devuelva todas las tareas y yo tomar la ultima
+        DaoTareas daoTareas = new DaoTareas(this);
+
+        ArrayList<Integer> arrayIds = new ArrayList<>();
+        arrayIds = daoTareas.buscarUltimoId(Tareas1); //El array que me gusrda todos los ids de las Tareas
+
+        if(noSave !=null) {
+            for (int i = 0; i < noSave.size(); i++) {
+
+                crearNotiRecordatorio(noSave.get(i).getYear(), noSave.get(i).getMonth(), noSave.get(i).getDay(),noSave.get(i).getHour(), noSave.get(i).getMin());
+
+                Recordatorio recordatorio = new Recordatorio(0, noSave.get(i).getFecha(), noSave.get(i).getHora(), arrayIds.get(arrayIds.size()-1));
+                DaoRecordatorios daoRecordatorios = new DaoRecordatorios(this);
+
+
+
+                        daoRecordatorios.insert(recordatorio);
+                        Log.i("Recordatorios", ""+recordatorio.getId());
+
+            }
+
+        }else{
+
+        }
+        finish();
+    }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public void crearNotificacion(int year, int month, int day, int hour, int min){
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+        Intent notificationIntent = new Intent(this, AlarmReceiver.class);
+
+        notificationIntent.putExtra("tarea", "Realizar la tarea "+tarea.getTitulo());
+
+        PendingIntent broadcast = PendingIntent.getBroadcast(this, 100, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        //Calendar cal = Calendar.getInstance();
+
+        c.set(year,month,day,hour,min,0);
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), broadcast);
+
+        //Toast.makeText(this, "Se creo la notificacion ", Toast.LENGTH_SHORT).show();
+    }
+
+
     private void abrirCalenadario(View view) {
         year = c.get(Calendar.YEAR);
         month = c.get(Calendar.MONTH);
@@ -162,7 +228,6 @@ public class AgregarTareas extends AppCompatActivity {
 
 
     private void abrirCalenadarioRecordatorio(View view) {
-        System.out.println("entro a calendarioRecordatorio");
         yearRecordatorio = calendarRecordatorios.get(Calendar.YEAR);
         monthRecordatorio = calendarRecordatorios.get(Calendar.MONTH);
         dayRecordaotio = calendarRecordatorios.get(Calendar.DAY_OF_MONTH);
@@ -220,11 +285,6 @@ public class AgregarTareas extends AppCompatActivity {
         timePickerDialog.show();
     }
 
-    public void guardarRecordatorios(int year, int month, int day, int hour, int min, String fecha, String hora){
-        RecordatorioAuxiliar r = new RecordatorioAuxiliar(year, month, day, hour, min, fecha, hora);
-        noSave.add(r);
-    }
-
 
     private void insert(View view){
 
@@ -242,62 +302,10 @@ public class AgregarTareas extends AppCompatActivity {
 
 
 
-    public void insertRecordatorios(View view){
-        String[] Tareas1 = {""}; //para que me devuelva todas las tareas y yo tomar la ultima
-        DaoTareas daoTareas = new DaoTareas(this);
-
-        ArrayList<Integer> arrayIds = new ArrayList<>();
-        arrayIds = daoTareas.buscarUltimoId(Tareas1); //El array que me gusrda todos los ids de las Tareas
-
-        if(noSave !=null) {
-            for (int i = 0; i < noSave.size(); i++) {
-
-                crearNotiRecordatorio(noSave.get(i).getYear(), noSave.get(i).getMonth(), noSave.get(i).getDay(),noSave.get(i).getHour(), noSave.get(i).getMin());
-
-                Recordatorio recordatorio = new Recordatorio(0, noSave.get(i).getFecha(), noSave.get(i).getHora(), arrayIds.get(arrayIds.size()-1));
-                DaoRecordatorios daoRecordatorios = new DaoRecordatorios(this);
-
-                switch (view.getId()) {
-                    case R.id.btnGuardar:
-                        daoRecordatorios.insert(recordatorio);
-                        Log.i("Recordatorios", ""+recordatorio.getId());
-                }
-            }
-
-        }else{
-
-        }
-        finish();
-    }
-
-    public void crearNotiRecordatorio(int year, int month, int day, int hour, int min){
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Intent notificationIntent = new Intent(this, AlarmReceiver.class);
-        notificationIntent.putExtra("tarea", "Recordatorio de la tarea "+tarea.getTitulo());
-        PendingIntent broadcast = PendingIntent.getBroadcast(this, 200, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-        calendarRecordatorios.set(year,month,day,hour,min,0);
-        alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendarRecordatorios.getTimeInMillis(), broadcast);
-
-        Log.i("Recordatorios", "Hora "+hour+":"+min);
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void crearNotificacion(int year, int month, int day, int hour, int min){
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-
-        Intent notificationIntent = new Intent(this, AlarmReceiver.class);
-
-        notificationIntent.putExtra("tarea", "Realizar la tarea "+tarea.getTitulo());
-
-        PendingIntent broadcast = PendingIntent.getBroadcast(this, 100, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
 
 
-        c.set(year,month,day,hour,min,0);
-        alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), broadcast);
 
-        Toast.makeText(this, "Se creo la notificacion ", Toast.LENGTH_SHORT).show();
-    }
+
 
 }
