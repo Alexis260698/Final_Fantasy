@@ -11,10 +11,13 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Activity.intermedio"></activity>
         <activity android:name=".Activity.multimedia" />
+        <activity android:name=".Activity.ActualizarTareas"></activity>
+        <activity android:name=".Activity.ActualizarNotas" />
+        <activity android:name=".Activity.AgregarNotas" />
+        <activity android:name=".Activity.AgregarTareas" />
         <activity android:name=".Activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
