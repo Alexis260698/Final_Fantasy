@@ -1,8 +1,5 @@
 package com.example.finalproyect.Clases;
 
-
-import com.example.finalproyect.Fragments.AgregarNotasFragment;
-
 import java.io.Serializable;
 
 public class Nota implements Serializable {

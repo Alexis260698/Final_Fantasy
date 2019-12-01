@@ -68,14 +68,14 @@
         android:id="@+id/btnGuardar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="200dp"
+        android:layout_marginStart="50dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:text="Guardar"
+        android:text="@string/guardar"
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.908"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -84,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="67dp"
         android:layout_marginTop="29dp"
-        android:text="Audio"
+        android:text="@string/grabar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etDescripcion" />
 
@@ -94,7 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="67dp"
         android:layout_marginTop="18dp"
-        android:text="Tomar"
+        android:text="@string/tomar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnAudio" />
 
@@ -104,8 +104,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="67dp"
         android:layout_marginTop="18dp"
-        android:text="Adjuntar"
+        android:text="@string/adjuntar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnTomar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="190dp"
+        android:layout_height="377dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnAdjuntar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

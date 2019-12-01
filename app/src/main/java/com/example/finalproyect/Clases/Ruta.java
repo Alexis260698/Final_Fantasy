@@ -4,16 +4,14 @@ import android.net.Uri;
 
 public class Ruta {
     int id;
-    Uri ruta; // o String?
+    Uri ruta;
     int tipo;
-    String descripcion;
     int idTarea;
 
-    public Ruta(int id, Uri ruta, int tipo, String descripcion, int idTarea) {
+    public Ruta(int id, Uri ruta, int tipo, int idTarea) {
         this.id = id;
         this.ruta = ruta;
         this.tipo = tipo;
-        this.descripcion = descripcion;
         this.idTarea = idTarea;
     }
 
@@ -39,14 +37,6 @@ public class Ruta {
 
     public void setIdTarea(int idTarea) {
         this.idTarea = idTarea;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
     }
 
     public int getTipo() {

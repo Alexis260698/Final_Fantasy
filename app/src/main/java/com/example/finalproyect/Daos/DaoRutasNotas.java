@@ -30,9 +30,7 @@ public class DaoRutasNotas {
                 path);
         contentValues.put(BD.COLUMNS_NAME_RUTASN[2],
                 ruta.getTipo());
-        contentValues.put(BD.COLUMNS_NAME_RUTASN[2],
-                ruta.getDescripcion());
-        contentValues.put(BD.COLUMNS_NAME_RUTASN[4],
+        contentValues.put(BD.COLUMNS_NAME_RUTASN[3],
                 ruta.getIdTarea());
 
         return  _sqLiteDatabase.insert(BD.TABLE_NAME_RUTASN,
@@ -62,10 +60,9 @@ public class DaoRutasNotas {
             int idObtenidoDeBD = cursor.getInt(0);
             Uri pathObtenidoDeBD = Uri.parse(cursor.getString(1));
             int tipoObtenidoDeBD = cursor.getInt(2);
-            String descripcionObtenidoDeBD = cursor.getString(3);
-            int idTareaObtenidoDeBD = cursor.getInt(4);
+            int idTareaObtenidoDeBD = cursor.getInt(3);
 
-            Ruta rutaObtenidoDeBD = new Ruta(idObtenidoDeBD, pathObtenidoDeBD, tipoObtenidoDeBD, descripcionObtenidoDeBD, idTareaObtenidoDeBD);
+            Ruta rutaObtenidoDeBD = new Ruta(idObtenidoDeBD, pathObtenidoDeBD, tipoObtenidoDeBD, idTareaObtenidoDeBD);
             rutas.add(rutaObtenidoDeBD);
 
         } while (cursor.moveToNext());

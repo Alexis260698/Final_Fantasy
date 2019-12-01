@@ -11,9 +11,18 @@
     <string name="bienvenido">Bienvenido</string>
     <string name="descripcion">Descripción</string>
     <string name="titulo">Título</string>
-    <string name="guardar">Guardar</string>
     <string name="ver_nota">Ver nota</string>
     <string name="ver">ver</string>
     <string name="editar">Editar</string>
     <string name="actualizar">Actualizar</string>
+    <string name="tituloAlert">Elija una opción</string>
+    <string name="audio">Audio</string>
+    <string name="video">Vídeo</string>
+    <string name="adjuntar">Adjuntar</string>
+    <string name="tomar">Tomar</string>
+    <string name="guardar">Guardar</string>
+    <string name="grabar">Grabar</string>
+    <string name="grabando">Grabando</string>
+    <string name="borrar">Borrar</string>
+    <string name="imagen">Imagen</string>
 </resources>

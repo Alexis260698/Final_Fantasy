@@ -61,13 +61,12 @@ public class BD extends SQLiteOpenHelper{
             "_id integer primary key autoincrement," +
             "ruta text not null," +
             "tipo int," +
-            "descripcion text," +
             "idTarea int not null, foreign key (idTarea) references Tareas(_id));"
             ;
 
     public static final String[] COLUMNS_NAME_RUTAS =
             {
-                    "_id", "ruta", "tipo", "descripcion", "idTarea"
+                    "_id", "ruta", "tipo", "idTarea"
             };
 
     public  static final String TABLE_NAME_RUTAS =
@@ -86,7 +85,7 @@ public class BD extends SQLiteOpenHelper{
 
     public static final String[] COLUMNS_NAME_RUTASN =
             {
-                    "_id", "ruta", "tipo", "descripcion", "_idNota"
+                    "_id", "ruta", "tipo", "_idNota"
             };
 
     public  static final String TABLE_NAME_RUTASN =

@@ -4,10 +4,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-
 import com.example.finalproyect.BDD.BD;
 import com.example.finalproyect.Clases.Nota;
-import com.example.finalproyect.Fragments.AgregarNotasFragment;
 
 import java.util.ArrayList;
 
