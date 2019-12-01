@@ -152,6 +152,7 @@ public class VerTareasFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), ActualizarTareas.class);
                 intent.putExtra("tarea", tarea);
                 startActivity(intent);
+
                 return true;
             default:
                 return super.onContextItemSelected(item);
