@@ -13,5 +13,17 @@
     <string name="descripcion">Description</string>
     <string name="titulo">Title</string>
     <string name="guardar">Save</string>
-    <string name="ver">ver</string>
+    <string name="ver">Show</string>
+    <string name="ver_nota">Show Note</string>
+    <string name="editar">Edit</string>
+    <string name="actualizar">Update</string>
+    <string name="tituloAlert">Pick a Choice</string>
+    <string name="audio">Audio</string>
+    <string name="video">Video</string>
+    <string name="adjuntar">Attach</string>
+    <string name="tomar">Take</string>
+    <string name="grabar">Record</string>
+    <string name="grabando">Recording</string>
+    <string name="borrar">Delete</string>
+    <string name="imagen">Picture</string>
 </resources>

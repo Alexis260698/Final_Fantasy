@@ -1,21 +1,12 @@
 package com.example.finalproyect.Activity;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-
-import com.example.finalproyect.Fragments.AgregarNotasFragment;
-import com.example.finalproyect.Fragments.AgregarTareasFragment;
 import com.example.finalproyect.Fragments.BienvenidaFragment;
 import com.example.finalproyect.Fragments.VerNotasFragment;
 import com.example.finalproyect.Fragments.VerTareasFragment;
