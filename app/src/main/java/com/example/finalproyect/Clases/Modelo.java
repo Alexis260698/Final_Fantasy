@@ -12,7 +12,6 @@ public class Modelo {
 
     public Modelo(int type, Uri data)
     {
-
         this.type = type;
         this.data = data;
 

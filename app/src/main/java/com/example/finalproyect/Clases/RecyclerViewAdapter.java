@@ -129,7 +129,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
 
     public static class ViewHolderImagenes extends RecyclerView.ViewHolder {
         ImageView myImageView;
-        TextView textImage;
         public ViewHolderImagenes(@NonNull View itemView) {
             super(itemView);
             myImageView = itemView.findViewById(R.id.imgAdaptador);
@@ -138,7 +137,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
 
     public static class ViewHolderAudio extends RecyclerView.ViewHolder {
         FloatingActionButton audio;
-        TextView textAudio;
         public ViewHolderAudio(@NonNull View itemView) {
             super(itemView);
             audio = itemView.findViewById(R.id.fabReproducir);
@@ -147,15 +145,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter {
 
     public static class ViewHolderVideo extends RecyclerView.ViewHolder {
         VideoView videoView;
-        TextView textAudio;
         public ViewHolderVideo(@NonNull View itemView) {
             super(itemView);
             videoView = itemView.findViewById(R.id.videoViewVista);
         }
     }
-
-    Uri getItem(int id) {
-        return listaRutas.get(id).data;
-    }
-
 }

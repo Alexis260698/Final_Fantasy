@@ -16,11 +16,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
 
 import com.example.finalproyect.Activity.ActualizarTareas;
 import com.example.finalproyect.Activity.AgregarTareas;
+import com.example.finalproyect.Activity.VerMultimedia;
 import com.example.finalproyect.Clases.Tarea;
 import com.example.finalproyect.Daos.DaoTareas;
 import com.example.finalproyect.R;
@@ -97,7 +97,7 @@ public class VerTareasFragment extends Fragment {
 
         adapter = new ArrayAdapter<Tarea>(getActivity(), android.R.layout.simple_list_item_1, tareas);
 
-        lvTareas = (ListView) getActivity().findViewById(R.id.lstNotas);
+        lvTareas = (ListView) getActivity().findViewById(R.id.lstTareas);
 
         lvTareas.setAdapter(adapter);
 
@@ -108,15 +108,13 @@ public class VerTareasFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        String[] Tarea1 = {""};
 
         daoTareas = new DaoTareas(getActivity());
-
-        adapter = new ArrayAdapter<Tarea>(getActivity(), android.R.layout.simple_list_item_1, tareas);
-
-        lvTareas = (ListView) getActivity().findViewById(R.id.lstNotas);
-
+        tareas = daoTareas.buscarporTitulo(Tarea1);
+        adapter = new  ArrayAdapter<Tarea>(getActivity(), android.R.layout.simple_list_item_1, tareas);
+        lvTareas = (ListView) getActivity().findViewById(R.id.lstTareas);
         lvTareas.setAdapter(adapter);
-
     }
 
     @Override
@@ -131,22 +129,22 @@ public class VerTareasFragment extends Fragment {
 
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
 
-        lvTareas = (ListView) getActivity().findViewById(R.id.lstNotas);
+        lvTareas = (ListView) getActivity().findViewById(R.id.lstTareas);
 
         Tarea tarea = (Tarea) lvTareas.getItemAtPosition(info.position);
 
         switch (item.getItemId()) {
+            case R.id.ver:
+                Intent intentVer = new Intent(getActivity(), VerMultimedia.class);
+                intentVer.putExtra("tarea", tarea);
+                startActivity(intentVer);
+                return true;
             case R.id.borrar:
                 daoTareas.eliminar(tarea.getId());
-
                 daoTareas = new DaoTareas(getActivity());
-
                 adapter = new ArrayAdapter<Tarea>(getActivity(), android.R.layout.simple_list_item_1, tareas);
-
-                lvTareas = (ListView) getActivity().findViewById(R.id.lstNotas);
-
+                lvTareas = (ListView) getActivity().findViewById(R.id.lstTareas);
                 lvTareas.setAdapter(adapter);
-
                 return true;
             case R.id.editar:
                 Intent intent = new Intent(getActivity(), ActualizarTareas.class);
