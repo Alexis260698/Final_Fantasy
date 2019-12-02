@@ -10,7 +10,6 @@
         layout="@layout/toolbar"/>
 
 
-
     <EditText
         android:id="@+id/etTitulo"
         android:layout_width="wrap_content"
@@ -22,7 +21,8 @@
         android:inputType="textPersonName"
         android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:text="@string/titulo" />
 
     <TextView
         android:id="@+id/tvDescripcion"
@@ -41,12 +41,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:layout_marginTop="32dp"
         android:ems="10"
-        android:textSize="16dp"
         android:hint="@string/descripcion"
         android:inputType="textPersonName"
+        android:text="@string/descripcion"
+        android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDescripcion" />
 
@@ -55,11 +55,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="200dp"
-        android:layout_marginLeft="200dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         android:layout_marginBottom="32dp"
-        android:text="Guardar"
+        android:text="@string/guardar"
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,7 +67,7 @@
         android:id="@+id/btnRecordatorio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Recordatorio"
+        android:text="@string/recordatorio"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.056"
@@ -81,7 +79,7 @@
         android:id="@+id/btnPlusrecordatorios"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mas Recordatorios"
+        android:text="@string/Masrecordatorios"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.066"

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FinalProyect</string>
+    <string name="app_name">Proyecto Final</string>
     <string name="ver_notas">Ver Notas</string>
     <string name="ver_tareas">Ver Tareas</string>
     <string name="agregar_notas">Agregar notas</string>
@@ -25,4 +25,8 @@
     <string name="grabando">Grabando</string>
     <string name="borrar">Borrar</string>
     <string name="imagen">Imagen</string>
+    <string name="buscar">Buscar</string>
+    <string name="recordatorio">Recordatorio</string>
+    <string name="Masrecordatorios">Mas Recordatorios</string>
+
 </resources>

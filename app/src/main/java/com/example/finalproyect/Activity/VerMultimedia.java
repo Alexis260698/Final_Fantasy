@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.finalproyect.Clases.Modelo;
@@ -32,6 +33,8 @@ public class VerMultimedia extends AppCompatActivity {
         setContentView(R.layout.activity_ver_multimedia);
 
         RecyclerViewAdapter recyclerViewAdapter;
+        TextView txtTitulo;
+        TextView txtDescripcion;
         ArrayList<Modelo> listaModelos = new ArrayList<>();
         RecyclerView recyclerView;
         Nota nota;
@@ -48,12 +51,20 @@ public class VerMultimedia extends AppCompatActivity {
         nota = (Nota) getIntent().getExtras().getSerializable("nota");
         tarea = (Tarea) getIntent().getExtras().getSerializable("tarea");
 
+        txtTitulo=(TextView) findViewById(R.id.txtTitulo);
+        txtDescripcion=(TextView)findViewById(R.id.txtDescripcion);
+
         if(nota != null){
             String[] id = {String.valueOf(nota.getId())};
             rutas = daoRutasNotas.buscarObjeto(id);
+            txtTitulo.setText(nota.getTitulo());
+            txtDescripcion.setText(nota.getDescripcion());
+
         }else if(tarea != null){
             String[] id = {String.valueOf(tarea.getId())};
             rutas = daoRutas.buscarObjeto(id);
+            txtTitulo.setText(tarea.getTitulo());
+            txtDescripcion.setText(tarea.getDescripcion());
         }
 
         int i;

@@ -26,4 +26,7 @@
     <string name="grabando">Recording</string>
     <string name="borrar">Delete</string>
     <string name="imagen">Picture</string>
+    <string name="buscar">Search</string>
+    <string name="recordatorio">Reminder</string>
+    <string name="Masrecordatorios">More Reminders</string>
 </resources>

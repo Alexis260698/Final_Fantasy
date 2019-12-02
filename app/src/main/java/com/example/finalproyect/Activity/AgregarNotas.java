@@ -149,7 +149,7 @@ public class AgregarNotas extends AppCompatActivity implements View.OnClickListe
                 dao.insert(obj);
         }
 
-        Toast.makeText(getApplicationContext(), "Nota Insertada", Toast.LENGTH_SHORT).show();
+
         finish();
     }
 

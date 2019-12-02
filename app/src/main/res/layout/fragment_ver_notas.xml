@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.VerNotasFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <RelativeLayout
+
+    <ListView
+        android:id="@+id/lsTareas"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/lstNotas"/>
-
-
+        android:layout_height="580dp"
+        android:layout_below="@+id/editText"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="83dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="7dp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
@@ -34,6 +35,29 @@
             app:borderWidth="0dp"
             app:srcCompat="@android:drawable/ic_input_add" />
 
-    </RelativeLayout>
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/button"
+        android:layout_width="142dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="23dp"
+        android:layout_toEndOf="@+id/editText"
+        android:text="@string/buscar"
+        tools:text="@string/buscar" />
+
+</RelativeLayout>
+

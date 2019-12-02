@@ -76,7 +76,7 @@ public class DaoRutas {
     public ArrayList<Ruta> buscarObjeto(String[] id){
         ArrayList<Ruta> rutas = new ArrayList<>();
 
-        ////////////////
+
         String[] columnasAConsultar = {BD.COLUMNS_NAME_RUTAS[0],BD.COLUMNS_NAME_RUTAS[1],BD.COLUMNS_NAME_RUTAS[2],BD.COLUMNS_NAME_RUTAS[3]};
         Cursor cursor = _sqLiteDatabase.query(BD.TABLE_NAME_RUTAS, columnasAConsultar, "idTarea = ?", id, null, null, null);
 

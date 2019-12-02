@@ -15,6 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.example.finalproyect.Activity.ActualizarNotas;
@@ -43,6 +45,7 @@ public class VerNotasFragment extends Fragment {
     private ArrayAdapter<Nota> adapter;
     private DAONotas daoNotas;
     private ArrayList<Nota> notas;
+    private EditText editText;
 
     private VerTareasFragment.OnFragmentInteractionListener mListener;
 
@@ -88,6 +91,28 @@ public class VerNotasFragment extends Fragment {
         });
 
 
+        Button button = (Button) getView().findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                editText = (EditText) getActivity().findViewById(R.id.editText);
+
+                String[] Notas1 = {editText.getText().toString(), editText.getText().toString()};
+
+                daoNotas = new DAONotas(getActivity());
+
+                notas = daoNotas.buscarporTitulo(Notas1);
+
+                adapter = new ArrayAdapter<Nota>(getActivity(), android.R.layout.simple_list_item_1, notas);
+
+                listView = (ListView) getActivity().findViewById(R.id.lsTareas);
+
+                listView.setAdapter(adapter);
+            }
+        });
+
+
         String[] Notas1 = {"", ""};
 
         daoNotas = new DAONotas(getActivity());
@@ -96,7 +121,7 @@ public class VerNotasFragment extends Fragment {
 
         adapter = new ArrayAdapter<Nota>(getActivity(), android.R.layout.simple_list_item_1, notas);
 
-        listView = (ListView) getActivity().findViewById(R.id.lstNotas);
+        listView = (ListView) getActivity().findViewById(R.id.lsTareas);
 
         listView.setAdapter(adapter);
         registerForContextMenu(listView);
@@ -115,7 +140,7 @@ public class VerNotasFragment extends Fragment {
 
         adapter = new ArrayAdapter<Nota>(getActivity(), android.R.layout.simple_list_item_1, notas);
 
-        listView = (ListView) getActivity().findViewById(R.id.lstNotas);
+        listView = (ListView) getActivity().findViewById(R.id.lsTareas);
 
         listView.setAdapter(adapter);
 
@@ -134,7 +159,7 @@ public class VerNotasFragment extends Fragment {
 
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
 
-        listView = (ListView) getActivity().findViewById(R.id.lstNotas);
+        listView = (ListView) getActivity().findViewById(R.id.lsTareas);
 
         Nota nota = (Nota) listView.getItemAtPosition(info.position);
 
@@ -146,11 +171,12 @@ public class VerNotasFragment extends Fragment {
                 return  true;
             case R.id.borrar:
                 daoNotas.eliminar(nota.getId());
+
                 String[] Notas1 = {""};
                 daoNotas = new DAONotas(getActivity());
                 notas = daoNotas.buscarporTitulo(Notas1);
                 adapter = new ArrayAdapter<Nota>(getActivity(), android.R.layout.simple_list_item_1, notas);
-                listView = (ListView) getActivity().findViewById(R.id.lstNotas);
+                listView = (ListView) getActivity().findViewById(R.id.lsTareas);
                 listView.setAdapter(adapter);
                 return true;
             case R.id.editar:
