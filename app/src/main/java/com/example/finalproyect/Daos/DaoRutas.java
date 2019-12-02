@@ -15,13 +15,11 @@ public class DaoRutas {
     SQLiteDatabase _sqLiteDatabase;
     Context ctx;
 
-
     public DaoRutas(Context ctx){
         this.ctx = ctx;
         _sqLiteDatabase =
                 new BD(ctx).getWritableDatabase();
     }
-
 
     public long insert(Ruta ruta){
         ContentValues contentValues
@@ -79,7 +77,7 @@ public class DaoRutas {
         ArrayList<Ruta> rutas = new ArrayList<>();
 
         ////////////////
-        String[] columnasAConsultar = {BD.COLUMNS_NAME_RUTAS[0],BD.COLUMNS_NAME_RUTAS[1],BD.COLUMNS_NAME_RUTAS[2],BD.COLUMNS_NAME_RUTAS[3],BD.COLUMNS_NAME_RUTAS[4]};
+        String[] columnasAConsultar = {BD.COLUMNS_NAME_RUTAS[0],BD.COLUMNS_NAME_RUTAS[1],BD.COLUMNS_NAME_RUTAS[2],BD.COLUMNS_NAME_RUTAS[3]};
         Cursor cursor = _sqLiteDatabase.query(BD.TABLE_NAME_RUTAS, columnasAConsultar, "idTarea = ?", id, null, null, null);
 
         if(id[0].equals("")){
