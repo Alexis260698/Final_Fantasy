@@ -132,14 +132,8 @@ public class AgregarTareas extends AppCompatActivity implements View.OnClickList
             }
         });
 
-        btnGuardar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                insert(view);
-                insertRecordatorios(view);
-                crearNotificacion(year,month,day,hour,min);
-                lanzarNotificacion(view,tarea);
-                btnRecordatorio.setEnabled(true);
+
+
         btnAudio = findViewById(R.id.btnAudio);
         btnTomar = findViewById(R.id.btnTomar);
         btnAdjuntar = findViewById(R.id.btnAdjuntar);
@@ -378,9 +372,10 @@ public class AgregarTareas extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
         if (view == btnGuardar) {
             insertarTarea(view);
-            insertRutas(view);
             insertRecordatorios(view);
             crearNotificacion(year,month,day,hour,min);
+            lanzarNotificacion(view,tarea);
+            btnRecordatorio.setEnabled(true);
         }
 
         if (view == btnAdjuntar) {
@@ -394,6 +389,7 @@ public class AgregarTareas extends AppCompatActivity implements View.OnClickList
         if (view == btnAudio) {
             grabarAudio(view);
         }
+
     }
 
     private void insertarTarea(View view) {
