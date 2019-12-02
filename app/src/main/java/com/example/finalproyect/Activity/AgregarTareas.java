@@ -3,6 +3,8 @@ package com.example.finalproyect.Activity;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
@@ -67,6 +69,7 @@ public class AgregarTareas extends AppCompatActivity implements View.OnClickList
     Button btnRecordatorio;
     Button btnPlusrecordatorios;
     Button btnGuardar;
+    private String CHANNEL_ID="CANALID";
 
     Tarea tarea;
     private int day, month, year, hour, min;
@@ -129,6 +132,14 @@ public class AgregarTareas extends AppCompatActivity implements View.OnClickList
             }
         });
 
+        btnGuardar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                insert(view);
+                insertRecordatorios(view);
+                crearNotificacion(year,month,day,hour,min);
+                lanzarNotificacion(view,tarea);
+                btnRecordatorio.setEnabled(true);
         btnAudio = findViewById(R.id.btnAudio);
         btnTomar = findViewById(R.id.btnTomar);
         btnAdjuntar = findViewById(R.id.btnAdjuntar);
@@ -172,6 +183,34 @@ public class AgregarTareas extends AppCompatActivity implements View.OnClickList
     public void guardarRecordatorios(int year, int month, int day, int hour, int min, String fecha, String hora){
         RecordatorioAuxiliar r = new RecordatorioAuxiliar(year, month, day, hour, min, fecha, hora);
         noSave.add(r);
+    }
+
+
+    public void lanzarNotificacion(View view,Tarea tarea){
+        Intent intent = new Intent(
+                "net.ivanvega.audioenandroidcurso.CAPTURARAUDIO"
+        );
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+
+
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(this, CHANNEL_ID)
+                        .setSmallIcon(android.R.drawable.ic_notification_overlay)
+                        .setContentTitle("Realizar Tarea: "+ tarea.getTitulo())
+                        .setContentText("Hacer: "+tarea.getDescripcion())
+                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                        // Set the intent that will fire when the user taps the notification
+                        .setContentIntent(pendingIntent)
+                        .setAutoCancel(true);
+
+
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+
+// notificationId is a unique int for each notification that you must define
+        notificationManager.notify(1001, mBuilder.build());
+
     }
 
     public void insertRecordatorios(View view){
