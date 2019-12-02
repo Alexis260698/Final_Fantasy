@@ -32,20 +32,17 @@ public class DaoRutasNotas {
                 ruta.getTipo());
         contentValues.put(BD.COLUMNS_NAME_RUTASN[3],
                 ruta.getIdTarea());
-
         return  _sqLiteDatabase.insert(BD.TABLE_NAME_RUTASN,
                 null, contentValues);
     }
 
     public ArrayList<Ruta> buscarObjeto(String[] id){
         ArrayList<Ruta> rutas = new ArrayList<>();
-
         ////////////////
-        String[] columnasAConsultar = {BD.COLUMNS_NAME_RUTASN[0],BD.COLUMNS_NAME_RUTASN[1],BD.COLUMNS_NAME_RUTASN[2],BD.COLUMNS_NAME_RUTASN[3],BD.COLUMNS_NAME_RUTASN[4]};
+        String[] columnasAConsultar = {BD.COLUMNS_NAME_RUTASN[0],BD.COLUMNS_NAME_RUTASN[1],BD.COLUMNS_NAME_RUTASN[2],BD.COLUMNS_NAME_RUTASN[3]};
         Cursor cursor = _sqLiteDatabase.query(BD.TABLE_NAME_RUTASN, columnasAConsultar, "_idNota = ?", id, null, null, null);
 
         if(id[0].equals("")){
-
             cursor = _sqLiteDatabase.query(BD.TABLE_NAME_RUTASN, columnasAConsultar, null, null, null, null, null);
         }
 
@@ -56,15 +53,12 @@ public class DaoRutasNotas {
         if (!cursor.moveToFirst()) return rutas;
 
         do {
-
             int idObtenidoDeBD = cursor.getInt(0);
             Uri pathObtenidoDeBD = Uri.parse(cursor.getString(1));
             int tipoObtenidoDeBD = cursor.getInt(2);
             int idTareaObtenidoDeBD = cursor.getInt(3);
-
             Ruta rutaObtenidoDeBD = new Ruta(idObtenidoDeBD, pathObtenidoDeBD, tipoObtenidoDeBD, idTareaObtenidoDeBD);
             rutas.add(rutaObtenidoDeBD);
-
         } while (cursor.moveToNext());
 
         cursor.close();

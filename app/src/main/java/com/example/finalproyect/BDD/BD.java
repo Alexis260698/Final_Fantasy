@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 public class BD extends SQLiteOpenHelper{
+    //Tabla Notas
     private String SCRIPT_DB_NOTAS = "create table Notas (" +
             "_id integer primary key autoincrement," +
             "titulo text not null," +
@@ -20,9 +21,9 @@ public class BD extends SQLiteOpenHelper{
 
     public  static final String TABLE_NAME_NOTAS =
             "Notas";
+    /////////////
 
-
-
+    //Tabla Tareas
     private String SCRIPT_DB_TAREAS = "create table Tareas (" +
             "_id integer primary key autoincrement," +
             "titulo text not null," +
@@ -38,9 +39,9 @@ public class BD extends SQLiteOpenHelper{
 
     public  static final String TABLE_NAME_TAREAS =
             "Tareas";
+    /////////
 
-
-
+    //Tabla recordatorios
     private String SCRIPT_DB_RECORDATORIOS = "create table Recordatorios (" +
             "_id integer primary key autoincrement," +
             "fecha text not null," +
@@ -55,8 +56,9 @@ public class BD extends SQLiteOpenHelper{
 
     public  static final String TABLE_NAME_RECORDATORIOS =
             "Recordatorios";
+    //////
 
-
+    //Tabla Rutas Tareas
     private String SCRIPT_DB_RUTAS = "create table Rutas (" +
             "_id integer primary key autoincrement," +
             "ruta text not null," +
@@ -71,15 +73,14 @@ public class BD extends SQLiteOpenHelper{
 
     public  static final String TABLE_NAME_RUTAS =
             "Rutas";
+    ///////
 
 
-
-
+    //Tablas RutaNotas
     private String SCRIPT_DB_RUTASN = "create table RutasNotas (" +
             "_id integer primary key autoincrement," +
             "ruta text not null," +
             "tipo int," +
-            "descripcion text," +
             "_idNota int not null, foreign key (_idNota) references Notas(_id));"
             ;
 
@@ -91,7 +92,7 @@ public class BD extends SQLiteOpenHelper{
     public  static final String TABLE_NAME_RUTASN =
             "RutasNotas";
 
-
+    ///
     public BD(@Nullable Context context) {
         super(context,
                 "databasenotas",

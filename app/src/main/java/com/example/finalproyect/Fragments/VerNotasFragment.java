@@ -1,15 +1,11 @@
 package com.example.finalproyect.Fragments;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.fragment.app.FragmentManager;
 
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -17,26 +13,19 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 
 import com.example.finalproyect.Activity.ActualizarNotas;
-import com.example.finalproyect.Activity.ActualizarTareas;
 import com.example.finalproyect.Activity.AgregarNotas;
+import com.example.finalproyect.Activity.VerMultimedia;
 import com.example.finalproyect.Clases.Nota;
-import com.example.finalproyect.Clases.Tarea;
 import com.example.finalproyect.Daos.DAONotas;
-import com.example.finalproyect.Daos.DaoRecordatorios;
-import com.example.finalproyect.Daos.DaoTareas;
 import com.example.finalproyect.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -150,21 +139,19 @@ public class VerNotasFragment extends Fragment {
         Nota nota = (Nota) listView.getItemAtPosition(info.position);
 
         switch (item.getItemId()) {
+            case R.id.ver:
+                Intent intentVer = new Intent(getActivity(),VerMultimedia.class);
+                intentVer.putExtra("nota",nota);
+                startActivity(intentVer);
+                return  true;
             case R.id.borrar:
                 daoNotas.eliminar(nota.getId());
-
                 String[] Notas1 = {""};
-
                 daoNotas = new DAONotas(getActivity());
                 notas = daoNotas.buscarporTitulo(Notas1);
-
-
                 adapter = new ArrayAdapter<Nota>(getActivity(), android.R.layout.simple_list_item_1, notas);
-
                 listView = (ListView) getActivity().findViewById(R.id.lstNotas);
-
                 listView.setAdapter(adapter);
-
                 return true;
             case R.id.editar:
                 Intent intent = new Intent(getActivity(), ActualizarNotas.class);
