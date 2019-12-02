@@ -24,21 +24,21 @@ import java.util.ArrayList;
 
 public class VerMultimedia extends AppCompatActivity {
 
-    RecyclerViewAdapter recyclerViewAdapter;
-    ArrayAdapter<Modelo> adapter;
-    ArrayList<Modelo> listaModelos = new ArrayList<>();
-    RecyclerView recyclerView;
-    Nota nota;
-    Tarea tarea;
-    DaoRutasNotas daoRutasNotas;
-    DaoRutas daoRutas;
-    ArrayList<Ruta> rutas = new ArrayList<>();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_multimedia);
+
+        RecyclerViewAdapter recyclerViewAdapter;
+        ArrayList<Modelo> listaModelos = new ArrayList<>();
+        RecyclerView recyclerView;
+        Nota nota;
+        Tarea tarea;
+        DaoRutasNotas daoRutasNotas;
+        DaoRutas daoRutas;
+        ArrayList<Ruta> rutas = new ArrayList<>();
 
         recyclerView = findViewById(R.id.recyclerMultimedia);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
@@ -58,7 +58,6 @@ public class VerMultimedia extends AppCompatActivity {
 
         int i;
         for (i=0; i<rutas.size(); i++){
-            Toast.makeText(this,"entro",Toast.LENGTH_SHORT).show();
             if (rutas.get(i).getTipo()==0){
                 Modelo model = new Modelo(Modelo.IMAGE_TYPE,rutas.get(i).getRuta());
                 listaModelos.add(model);
@@ -74,6 +73,8 @@ public class VerMultimedia extends AppCompatActivity {
         recyclerViewAdapter = new RecyclerViewAdapter(this, listaModelos);
         recyclerView.setAdapter(recyclerViewAdapter);
 
-        //Toast.makeText(this,String.valueOf(rutas.size()),Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,String.valueOf(rutas.size()),Toast.LENGTH_SHORT).show();
     }
+
+
 }
