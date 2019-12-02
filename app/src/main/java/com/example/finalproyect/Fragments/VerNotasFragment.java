@@ -156,8 +156,8 @@ public class VerNotasFragment extends Fragment {
                 String[] Notas1 = {""};
 
                 daoNotas = new DAONotas(getActivity());
-
                 notas = daoNotas.buscarporTitulo(Notas1);
+
 
                 adapter = new ArrayAdapter<Nota>(getActivity(), android.R.layout.simple_list_item_1, notas);
 
